@@ -120,9 +120,6 @@ class SEO_Debloater {
 
 		register_activation_hook( $this->file, array( $this, 'install' ) );
 
-		// Handle localisation
-		add_action( 'plugins_loaded', array( $this, 'i18n' ), 0 );
-
 		/*** PLUGIN FUNCTIONS ***/
 
 		// @since v1.3.0
@@ -657,17 +654,6 @@ class SEO_Debloater {
 		}
 
 		echo '</style>';
-	}
-
-	/**
-	 * Loads the translation file.
-	 * Since WordPress 4.6, translations are loaded automatically for plugins hosted on WP.org.
-	 *
-	 * @since v1.0.0
-	 */
-	function i18n() {
-		// WordPress 4.6+ loads translations automatically; manual call kept for local/non-WP.org installs.
-		load_plugin_textdomain( 'seo-debloater', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**
