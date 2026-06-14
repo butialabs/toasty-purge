@@ -3,7 +3,7 @@
  * Plugin Name:       SEO Debloater
  * Plugin URI:        https://github.com/butialabs/seo-debloater
  * Description:       Hide most of the bloat that the Yoast SEO plugin adds to your WordPress Dashboard
- * Version:           1.0.1
+ * Version:           0.0.1
  * Requires at least: 6.5
  * Tested up to:      7.0
  * Requires PHP:      8.2
@@ -34,7 +34,7 @@ require_once( 'admin/class-seo-debloater-admin-api.php' );
  * @return object SEO_Debloater
  */
 function SEO_Debloater () {
-	$instance = SEO_Debloater::instance( __FILE__, '1.0.1' );
+	$instance = SEO_Debloater::instance( __FILE__, '0.0.1' );
 
 	if ( null === $instance->settings ) {
 		$instance->settings = SEO_Debloater_Settings::instance( $instance );

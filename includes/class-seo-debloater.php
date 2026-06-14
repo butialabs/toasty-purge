@@ -108,7 +108,7 @@ class SEO_Debloater {
 	 * @param string $file
 	 * @param string $version Version number.
 	 */
-	public function __construct( $file = '', $version = '1.0.1' ) {
+	public function __construct( $file = '', $version = '0.0.1' ) {
 		$this->_version = $version;
 		$this->_token   = 'seo_debloater';
 
@@ -138,7 +138,7 @@ class SEO_Debloater {
 		add_action( 'admin_menu', array( $this, 'remove_admin_columns_init' ), 11 );
 		// @since 3.13.0
 		add_action( 'admin_init', array( $this, 'remove_seo_scores_dropdown_filters' ), 20 );
-		// @since v1.0.0 - Disable AI & LLMs.txt features
+		// @since v0.0.1 - Disable AI & LLMs.txt features
 		add_action( 'admin_init', array( $this, 'disable_ai_llms_features' ), 5 );
 
 
@@ -212,12 +212,12 @@ class SEO_Debloater {
 		// Google has discontinued its Crawl Errors API so the Search Console page in Yoast is useless now; @since v3.12.0
 		remove_submenu_page( 'wpseo_dashboard', 'wpseo_search_console' );
 
-		// Remove Support submenu; @since v1.0.0
+		// Remove Support submenu; @since v0.0.1
 		if ( ! empty( $this->options['hide_support_submenu'] ) ) {
 			remove_submenu_page( 'wpseo_dashboard', 'wpseo_page_support' );
 		}
 
-		// Remove AI Brand Insights submenu (free & premium versions); @since v1.0.0
+		// Remove AI Brand Insights submenu (free & premium versions); @since v0.0.1
 		if ( ! empty( $this->options['hide_ai_brand_insights'] ) ) {
 			remove_submenu_page( 'wpseo_dashboard', 'wpseo_brand_insights' );
 			remove_submenu_page( 'wpseo_dashboard', 'wpseo_brand_insights_premium' );
@@ -363,7 +363,7 @@ class SEO_Debloater {
 	 * Disable AI & LLMs.txt features
 	 * Disables the enable_llms_txt option in Yoast SEO
 	 *
-	 * @since v1.0.0
+	 * @since v0.0.1
 	 */
 	public function disable_ai_llms_features() {
 		if ( ! empty( $this->options['disable_ai_llms_features'] ) ) {
@@ -378,7 +378,7 @@ class SEO_Debloater {
 	 *
 	 * @param array $defaults The default options.
 	 * @return array Modified defaults.
-	 * @since v1.0.0
+	 * @since v0.0.1
 	 */
 	public function filter_llms_defaults( $defaults ) {
 		if ( isset( $defaults['enable_llms_txt'] ) ) {
@@ -392,7 +392,7 @@ class SEO_Debloater {
 	 *
 	 * @param array $options The options.
 	 * @return array Modified options.
-	 * @since v1.0.0
+	 * @since v0.0.1
 	 */
 	public function filter_llms_option( $options ) {
 		if ( is_array( $options ) && isset( $options['enable_llms_txt'] ) ) {
@@ -670,7 +670,7 @@ class SEO_Debloater {
 	 *
 	 * @return SEO_Debloater $_instance
 	 */
-	public static function instance( $file = '', $version = '1.0.1' ) {
+	public static function instance( $file = '', $version = '0.0.1' ) {
 		if ( null === self::$_instance ) {
 			self::$_instance = new self( $file, $version );
 		}

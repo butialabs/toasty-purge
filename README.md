@@ -66,13 +66,13 @@ I welcome your contributions very much! PR's will be considered and of course bu
 
 ## Changelog
 
-### 1.0.1
+### 0.0.1
 
 * release date January 28, 2025
 * added option to remove AI bloat
 * added option to remove support screen
 
-### 1.0.0
+### 0.0.1
 
 * release date January 27, 2025
 * rename to SEO Debloater

@@ -4,7 +4,7 @@ Tags: seo, cleanup, bloat, hide, dashboard
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.2
-Stable tag: 1.0.0
+Stable tag: 0.0.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,21 +107,21 @@ Please open an issue on [Github](https://github.com/butialabs/seo-debloater/issu
 
 == Changelog ==
 
-= 1.0.1 =
+= 0.0.1 =
 * Release date: January 28, 2025
 * Added option to remove AI bloat
 * Added option to remove support screen
 * Added option to disable AI & LLMs.txt features
 
-= 1.0.0 =
+= 0.0.1 =
 * Release date: January 27, 2025
 * Renamed to SEO Debloater
 * Forked from SO Clean Up Yoast SEO
 
 == Upgrade Notice ==
 
-= 1.0.1 =
+= 0.0.1 =
 New options to hide AI and LLMs.txt features added by Yoast SEO. Recommended update for all users.
 
-= 1.0.0 =
+= 0.0.1 =
 Initial release as SEO Debloater. If you were using SO Clean Up Yoast SEO, this is the successor plugin.
