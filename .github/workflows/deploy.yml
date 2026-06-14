@@ -18,7 +18,7 @@ jobs:
       - name: Validate version consistency
         run: |
           echo "Checking version consistency..."
-          PLUGIN_VERSION=$(grep -oP '(?<=Version:\s{1,10})[0-9]+\.[0-9]+\.[0-9]+' wp-seo-debloater.php | head -1)
+          PLUGIN_VERSION=$(grep -oP '(?<=Version:\s{1,10})[0-9]+\.[0-9]+\.[0-9]+' seo-debloater.php | head -1)
           README_VERSION=$(grep -oP '(?<=Stable tag:\s)[0-9]+\.[0-9]+\.[0-9]+' readme.txt | head -1)
           TAG_VERSION=${GITHUB_REF#refs/tags/}
 
@@ -46,11 +46,11 @@ jobs:
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SLUG: wp-seo-debloater
+          SLUG: seo-debloater
 
       - name: Upload release asset
         uses: actions/upload-artifact@v4
         with:
-          name: wp-seo-debloater-${{ github.ref_name }}
+          name: seo-debloater-${{ github.ref_name }}
           path: ${{ steps.deploy.outputs.zip-path }}
           retention-days: 30

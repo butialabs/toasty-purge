@@ -1,4 +1,4 @@
-=== WP SEO Debloater ===
+=== SEO Debloater ===
 Contributors: butialabs
 Donate link: https://butialabs.com
 Tags: seo, cleanup, bloat, hide, dashboard
@@ -17,7 +17,7 @@ Free addon for the Yoast SEO plugin to hide the bloat it adds to your WordPress 
 
 > **Note:** This plugin is a fork of the original [Hide SEO Bloat](https://github.com/senlin/so-clean-up-wp-seo) plugin (also known as "SO Clean Up Yoast SEO") created by Pieter Bos.
 
-WP SEO Debloater hides (sidebar) ads and premium version buttons of Yoast SEO from their settings pages and your website's dashboard (and frontend).
+SEO Debloater hides (sidebar) ads and premium version buttons of Yoast SEO from their settings pages and your website's dashboard (and frontend).
 
 = Features =
 
@@ -41,11 +41,11 @@ WP SEO Debloater hides (sidebar) ads and premium version buttons of Yoast SEO fr
 
 = Multisite Compatible =
 
-Yes, WP SEO Debloater works on WordPress Multisite installations.
+Yes, SEO Debloater works on WordPress Multisite installations.
 
 = Why use this plugin? =
 
-Since version 20.0 of Yoast SEO, the Settings page has received a complete overhaul, but still contains many elements that clutter your WordPress admin. WP SEO Debloater provides a single settings page where you can control what gets hidden.
+Since version 20.0 of Yoast SEO, the Settings page has received a complete overhaul, but still contains many elements that clutter your WordPress admin. SEO Debloater provides a single settings page where you can control what gets hidden.
 
 = Credits =
 
@@ -56,16 +56,16 @@ This plugin is maintained by [Butiá Labs](https://butialabs.com) and is a fork 
 = Automatic Installation =
 
 1. Go to Plugins > Add New in your WordPress admin
-2. Search for "WP SEO Debloater"
+2. Search for "SEO Debloater"
 3. Click "Install Now" and then "Activate"
-4. Navigate to SEO > WP SEO Debloater to configure settings
+4. Navigate to SEO > SEO Debloater to configure settings
 
 = Manual Installation =
 
 1. Download the plugin zip file
-2. Upload the plugin files to the `/wp-content/plugins/wp-seo-debloater` directory, or install the plugin through the WordPress plugins screen directly
+2. Upload the plugin files to the `/wp-content/plugins/seo-debloater` directory, or install the plugin through the WordPress plugins screen directly
 3. Activate the plugin through the 'Plugins' screen in WordPress
-4. Navigate to SEO > WP SEO Debloater to configure your preferred settings
+4. Navigate to SEO > SEO Debloater to configure your preferred settings
 
 = Requirements =
 
@@ -79,7 +79,7 @@ This plugin is maintained by [Butiá Labs](https://butialabs.com) and is a fork 
 
 The link to the page has been added to the Yoast SEO menu and of course there is also a link to it from the Plugins page.
 
-= Can I use WP SEO Debloater on Multisite? =
+= Can I use SEO Debloater on Multisite? =
 
 Yes, you can. The plugin is fully compatible with WordPress Multisite installations.
 
@@ -89,7 +89,7 @@ The name refers to removing the bloat added by Yoast. There is only one SEO plug
 
 = The plugin doesn't do anything! =
 
-Do you have the Yoast SEO plugin installed? WP SEO Debloater hides the bloat from that plugin only. If you have Yoast SEO installed and the plugin still doesn't do anything, please open a [support ticket](https://github.com/butialabs/wp-seo-debloater/issues).
+Do you have the Yoast SEO plugin installed? SEO Debloater hides the bloat from that plugin only. If you have Yoast SEO installed and the plugin still doesn't do anything, please open a [support ticket](https://github.com/butialabs/seo-debloater/issues).
 
 = What happens to database entries on uninstall? =
 
@@ -97,14 +97,14 @@ The plugin writes its settings to the database. The included `uninstall.php` fil
 
 = I have an issue with this plugin, where can I get support? =
 
-Please open an issue on [Github](https://github.com/butialabs/wp-seo-debloater/issues)
+Please open an issue on [Github](https://github.com/butialabs/seo-debloater/issues)
 
 == Screenshots ==
 
-1. WP SEO Debloater settings page - Yoast SEO Settings section
-2. WP SEO Debloater settings page - Posts, Pages, Custom post types section
-3. WP SEO Debloater settings page - Miscellaneous section
-4. WP SEO Debloater settings page - AI section
+1. SEO Debloater settings page - Yoast SEO Settings section
+2. SEO Debloater settings page - Posts, Pages, Custom post types section
+3. SEO Debloater settings page - Miscellaneous section
+4. SEO Debloater settings page - AI section
 
 == Changelog ==
 
@@ -116,7 +116,7 @@ Please open an issue on [Github](https://github.com/butialabs/wp-seo-debloater/i
 
 = 1.0.0 =
 * Release date: January 27, 2025
-* Renamed to WP SEO Debloater
+* Renamed to SEO Debloater
 * Forked from SO Clean Up Yoast SEO
 
 == Upgrade Notice ==
@@ -125,4 +125,4 @@ Please open an issue on [Github](https://github.com/butialabs/wp-seo-debloater/i
 New options to hide AI and LLMs.txt features added by Yoast SEO. Recommended update for all users.
 
 = 1.0.0 =
-Initial release as WP SEO Debloater. If you were using SO Clean Up Yoast SEO, this is the successor plugin.
+Initial release as SEO Debloater. If you were using SO Clean Up Yoast SEO, this is the successor plugin.

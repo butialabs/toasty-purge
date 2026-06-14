@@ -5,9 +5,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class WP_SEO_Debloater_Admin_API
+ * Class SEO_Debloater_Admin_API
  */
-class WP_SEO_Debloater_Admin_API {
+class SEO_Debloater_Admin_API {
 
 	/**
 	 * Generate HTML for displaying fields
@@ -23,7 +23,7 @@ class WP_SEO_Debloater_Admin_API {
 	public function display_field( $data = array(), $post = false, $echo = true ) {
 
 		// Get plugin settings
-		$plugin  = WP_SEO_Debloater::instance();
+		$plugin  = SEO_Debloater::instance();
 		$options = get_site_option( $plugin->_token . '_settings' );
 
 		// Get field info

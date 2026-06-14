@@ -15,7 +15,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 /**
- * Remove all wp_seo_debloater_ options from the database
+ * Remove all seo_debloater_ options from the database
  *
  * @since v2.0.0
  */
@@ -25,14 +25,14 @@ if ( is_multisite() ) {
 	$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		$wpdb->prepare(
 			"DELETE FROM `{$wpdb->base_prefix}sitemeta` WHERE `meta_key` LIKE %s LIMIT 1000",
-			'%wp_seo_debloater_%'
+			'%seo_debloater_%'
 		)
 	);
 } else {
 	$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		$wpdb->prepare(
 			"DELETE FROM `{$wpdb->base_prefix}options` WHERE `option_name` LIKE %s LIMIT 1000",
-			'%wp_seo_debloater_%'
+			'%seo_debloater_%'
 		)
 	);
 }

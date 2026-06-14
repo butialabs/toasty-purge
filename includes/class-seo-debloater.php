@@ -5,12 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class WP_SEO_Debloater
+ * Class SEO_Debloater
  */
-class WP_SEO_Debloater {
+class SEO_Debloater {
 
 	/**
-	 * The single instance of WP_SEO_Debloater.
+	 * The single instance of SEO_Debloater.
 	 *
 	 * @var    object
 	 * @access   private
@@ -110,7 +110,7 @@ class WP_SEO_Debloater {
 	 */
 	public function __construct( $file = '', $version = '1.0.1' ) {
 		$this->_version = $version;
-		$this->_token   = 'wp_seo_debloater';
+		$this->_token   = 'seo_debloater';
 
 		// Load plugin environment variables
 		$this->file       = $file;
@@ -147,7 +147,7 @@ class WP_SEO_Debloater {
 
 		// Load API for generic admin functions
 		if ( is_admin() ) {
-			$this->admin = new WP_SEO_Debloater_Admin_API();
+			$this->admin = new SEO_Debloater_Admin_API();
 		}
 
 		$this->options = $this->_get_options();
@@ -275,7 +275,7 @@ class WP_SEO_Debloater {
 
 		if ( ! empty( $this->options['remove_permalinks_warning'] ) ) {
 
-			wp_seo_debloater_remove_class_hook( 'admin_notices', 'WPSEO_Admin_Init', 'permalink_settings_notice' );
+			seo_debloater_remove_class_hook( 'admin_notices', 'WPSEO_Admin_Init', 'permalink_settings_notice' );
 
 		}
 	}
@@ -667,22 +667,22 @@ class WP_SEO_Debloater {
 	 */
 	function i18n() {
 		// WordPress 4.6+ loads translations automatically; manual call kept for local/non-WP.org installs.
-		load_plugin_textdomain( 'wp-seo-debloater', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'seo-debloater', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**
-	 * Main WP_SEO_Debloater Instance
+	 * Main SEO_Debloater Instance
 	 *
-	 * Ensures only one instance of WP_SEO_Debloater is loaded or can be loaded.
+	 * Ensures only one instance of SEO_Debloater is loaded or can be loaded.
 	 *
 	 * @since v2.0.0
 	 * @static
-	 * @see   WP_SEO_Debloater()
+	 * @see   SEO_Debloater()
 	 *
 	 * @param string $file
 	 * @param string $version Version number.
 	 *
-	 * @return WP_SEO_Debloater $_instance
+	 * @return SEO_Debloater $_instance
 	 */
 	public static function instance( $file = '', $version = '1.0.1' ) {
 		if ( null === self::$_instance ) {
@@ -698,7 +698,7 @@ class WP_SEO_Debloater {
 	 * @since v2.0.0
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'No Access', 'wp-seo-debloater' ), esc_html( $this->_version ) );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'No Access', 'seo-debloater' ), esc_html( $this->_version ) );
 	} // End __clone ()
 
 	/**
@@ -707,7 +707,7 @@ class WP_SEO_Debloater {
 	 * @since v2.0.0
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'No Access', 'wp-seo-debloater' ), esc_html( $this->_version ) );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'No Access', 'seo-debloater' ), esc_html( $this->_version ) );
 	} // End __wakeup ()
 
 	/**
