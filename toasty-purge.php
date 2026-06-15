@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name:       SEO Debloater
- * Plugin URI:        https://github.com/butialabs/seo-debloater
+ * Plugin Name:       Toasty Purge
+ * Plugin URI:        https://github.com/butialabs/toasty-purge
  * Description:       Hide most of the bloat that the Yoast SEO plugin adds to your WordPress Dashboard
  * Version:           0.0.1
  * Requires at least: 6.5
@@ -10,7 +10,7 @@
  * Author:            Butiá Labs
  * Author URI:        https://butialabs.com
  * License:           GPL-2.0-or-later
- * Text Domain:       seo-debloater
+ * Text Domain:       toasty-purge
  * Domain Path:       /languages
  */
 
@@ -18,29 +18,29 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 // Load plugin class files
-require_once( 'includes/class-seo-debloater.php' );
-require_once( 'includes/class-seo-debloater-settings.php' );
+require_once( 'includes/class-toasty-purge.php' );
+require_once( 'includes/class-toasty-purge-settings.php' );
 
 // Load separate remove class function
 require_once( 'includes/remove-class.php' );
 
 // Load plugin libraries
-require_once( 'admin/class-seo-debloater-admin-api.php' );
+require_once( 'admin/class-toasty-purge-admin-api.php' );
 
 /**
- * Returns the main instance of SEO_Debloater to prevent the need to use globals.
+ * Returns the main instance of Toasty_Purge to prevent the need to use globals.
  *
  * @since  v2.0.0
- * @return object SEO_Debloater
+ * @return object Toasty_Purge
  */
-function SEO_Debloater () {
-	$instance = SEO_Debloater::instance( __FILE__, '0.0.1' );
+function Toasty_Purge () {
+	$instance = Toasty_Purge::instance( __FILE__, '0.0.1' );
 
 	if ( null === $instance->settings ) {
-		$instance->settings = SEO_Debloater_Settings::instance( $instance );
+		$instance->settings = Toasty_Purge_Settings::instance( $instance );
 	}
 
 	return $instance;
 }
 
-SEO_Debloater();
+Toasty_Purge();

@@ -24,8 +24,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return bool Whether the function is removed.
  */
-if ( ! function_exists( 'seo_debloater_remove_class_hook' ) ) {
-	function seo_debloater_remove_class_hook( $tag, $class_name = '', $method_name = '', $priority = 10 ) {
+if ( ! function_exists( 'Toasty_Purge_remove_class_hook' ) ) {
+	function Toasty_Purge_remove_class_hook( $tag, $class_name = '', $method_name = '', $priority = 10 ) {
 		global $wp_filter;
 		$is_hook_removed = false;
 		if ( ! empty( $wp_filter[ $tag ]->callbacks[ $priority ] ) ) {

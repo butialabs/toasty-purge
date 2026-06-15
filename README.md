@@ -1,4 +1,4 @@
-# SEO Debloater
+# Toasty Purge
 
 ###### Original Author: [Pieter Bos](https://github.com/senlin)
 
@@ -12,7 +12,7 @@ Hides (sidebar) ads and premium version buttons of Yoast SEO from their settings
 
 <hr>
 
-SEO Debloater provides a single settings page where you can control what gets hidden from Yoast SEO's cluttered admin interface.
+Toasty Purge provides a single settings page where you can control what gets hidden from Yoast SEO's cluttered admin interface.
 
 Since version 20.0 of Yoast SEO however, the Settings page has received a complete overhaul, which made hiding things much more difficult.
 
@@ -24,7 +24,7 @@ For everyone to become much more productive and happier, my proposal therefore i
 
 <hr>
 
-If you like the SEO Debloater plugin, please consider leaving a review. You can also help a great deal by translating the plugin into your own language.
+If you like the Toasty Purge plugin, please consider leaving a review. You can also help a great deal by translating the plugin into your own language.
 Alternatively you are welcome to make a [donation](https://so-wp.com/donations). Thanks!
 
 ## Frequently Asked Questions
@@ -33,7 +33,7 @@ Alternatively you are welcome to make a [donation](https://so-wp.com/donations).
 
 The link to the page has been added to the Yoast SEO menu and of course there is also a link to it from the Plugins page.
 
-### Can I use SEO Debloater on Multisite?
+### Can I use Toasty Purge on Multisite?
 
 Yes, you can.
 
@@ -44,16 +44,16 @@ The name refers to removing the bloat added by Yoast. There is only one SEO plug
 ### The plugin doesn't do anything!
 
 Do you have the Yoast SEO plugin installed? It hides the bloat from that plugin only.
-If you have and the plugin still doesn't do anything, then please open a [support ticket](https://github.com/butialabs/seo-debloater/issues).
+If you have and the plugin still doesn't do anything, then please open a [support ticket](https://github.com/butialabs/toasty-purge/issues).
 
 ### With a settings page comes additional entries in the database; what happens on uninstall?
 
 Great question!
-Indeed the SEO Debloater plugin writes its settings to the database. The included `uninstall.php` file removes all the plugin-related entries from the database once you remove the plugin via the WordPress Plugins page (not on deactivation).
+Indeed the Toasty Purge plugin writes its settings to the database. The included `uninstall.php` file removes all the plugin-related entries from the database once you remove the plugin via the WordPress Plugins page (not on deactivation).
 
 ### I have an issue with this plugin, where can I get support?
 
-Please open an issue here on [Github](https://github.com/butialabs/seo-debloater/issues)
+Please open an issue here on [Github](https://github.com/butialabs/toasty-purge/issues)
 
 ## Contributions
 
@@ -75,4 +75,4 @@ I welcome your contributions very much! PR's will be considered and of course bu
 ### 0.0.1
 
 * release date January 27, 2025
-* rename to SEO Debloater
+* rename to Toasty Purge

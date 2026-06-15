@@ -5,12 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class SEO_Debloater
+ * Class Toasty_Purge
  */
-class SEO_Debloater {
+class Toasty_Purge {
 
 	/**
-	 * The single instance of SEO_Debloater.
+	 * The single instance of Toasty_Purge.
 	 *
 	 * @var    object
 	 * @access   private
@@ -110,7 +110,7 @@ class SEO_Debloater {
 	 */
 	public function __construct( $file = '', $version = '0.0.1' ) {
 		$this->_version = $version;
-		$this->_token   = 'seo_debloater';
+		$this->_token   = 'Toasty_Purge';
 
 		// Load plugin environment variables
 		$this->file       = $file;
@@ -144,7 +144,7 @@ class SEO_Debloater {
 
 		// Load API for generic admin functions
 		if ( is_admin() ) {
-			$this->admin = new SEO_Debloater_Admin_API();
+			$this->admin = new Toasty_Purge_Admin_API();
 		}
 
 		$this->options = $this->_get_options();
@@ -272,7 +272,7 @@ class SEO_Debloater {
 
 		if ( ! empty( $this->options['remove_permalinks_warning'] ) ) {
 
-			seo_debloater_remove_class_hook( 'admin_notices', 'WPSEO_Admin_Init', 'permalink_settings_notice' );
+			Toasty_Purge_remove_class_hook( 'admin_notices', 'WPSEO_Admin_Init', 'permalink_settings_notice' );
 
 		}
 	}
@@ -657,18 +657,18 @@ class SEO_Debloater {
 	}
 
 	/**
-	 * Main SEO_Debloater Instance
+	 * Main Toasty_Purge Instance
 	 *
-	 * Ensures only one instance of SEO_Debloater is loaded or can be loaded.
+	 * Ensures only one instance of Toasty_Purge is loaded or can be loaded.
 	 *
 	 * @since v2.0.0
 	 * @static
-	 * @see   SEO_Debloater()
+	 * @see   Toasty_Purge()
 	 *
 	 * @param string $file
 	 * @param string $version Version number.
 	 *
-	 * @return SEO_Debloater $_instance
+	 * @return Toasty_Purge $_instance
 	 */
 	public static function instance( $file = '', $version = '0.0.1' ) {
 		if ( null === self::$_instance ) {
@@ -684,7 +684,7 @@ class SEO_Debloater {
 	 * @since v2.0.0
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'No Access', 'seo-debloater' ), esc_html( $this->_version ) );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'No Access', 'toasty-purge' ), esc_html( $this->_version ) );
 	} // End __clone ()
 
 	/**
@@ -693,7 +693,7 @@ class SEO_Debloater {
 	 * @since v2.0.0
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'No Access', 'seo-debloater' ), esc_html( $this->_version ) );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'No Access', 'toasty-purge' ), esc_html( $this->_version ) );
 	} // End __wakeup ()
 
 	/**

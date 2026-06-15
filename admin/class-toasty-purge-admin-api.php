@@ -5,9 +5,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class SEO_Debloater_Admin_API
+ * Class Toasty_Purge_Admin_API
  */
-class SEO_Debloater_Admin_API {
+class Toasty_Purge_Admin_API {
 
 	/**
 	 * Generate HTML for displaying fields
@@ -23,7 +23,7 @@ class SEO_Debloater_Admin_API {
 	public function display_field( $data = array(), $post = false, $echo = true ) {
 
 		// Get plugin settings
-		$plugin  = SEO_Debloater::instance();
+		$plugin  = Toasty_Purge::instance();
 		$options = get_site_option( $plugin->_token . '_settings' );
 
 		// Get field info
