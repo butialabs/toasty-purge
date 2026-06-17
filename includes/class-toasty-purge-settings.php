@@ -4,10 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Toasty_Purge_Settings {
+class TOASTYPRG_Settings {
 
 	/**
-	 * The single instance of Toasty_Purge_Settings.
+	 * The single instance of TOASTYPRG_Settings.
 	 *
 	 * @var    object
 	 * @access   private
@@ -43,14 +43,14 @@ class Toasty_Purge_Settings {
 	public $settings = array();
 
 	/**
-	 * Toasty_Purge_Settings constructor.
+	 * TOASTYPRG_Settings constructor.
 	 *
 	 * @param $parent
 	 */
 	public function __construct( $parent ) {
 		$this->parent = $parent;
 
-		$this->base = 'Toasty_Purge_';
+		$this->base = $this->parent->_token . '_';
 
 		$plugin_slug = plugin_basename( $this->parent->file );
 
@@ -106,7 +106,7 @@ class Toasty_Purge_Settings {
 			wp_die( esc_html__( 'You do not have permission to save these settings.', 'toasty-purge' ) );
 		}
 
-		$plugin        = Toasty_Purge::instance();
+		$plugin        = TOASTYPRG::instance();
 		$options_list  = array_keys( $plugin->get_defaults() );
 		$multi_options = array(
 			'hide_admincolumns',
@@ -189,7 +189,7 @@ class Toasty_Purge_Settings {
 	 * @since    v0.0.1
 	 */
 	private function settings_fields() {
-		$plugin  = Toasty_Purge::instance();
+		$plugin  = TOASTYPRG::instance();
 		$options = $plugin->get_defaults();
 
 		$settings['section_1'] = array(
@@ -359,10 +359,7 @@ class Toasty_Purge_Settings {
 	 * @return mixed Sanitized settings value.
 	 */
 	public function sanitize_settings( $value ) {
-		if ( is_array( $value ) ) {
-			return array_map( 'sanitize_text_field', $value );
-		}
-		return sanitize_text_field( (string) $value );
+		return map_deep( $value, 'sanitize_text_field' );
 	}
 
 	/**
@@ -456,17 +453,17 @@ class Toasty_Purge_Settings {
 	}
 
 	/**
-	 * Main Toasty_Purge_Settings Instance
+	 * Main TOASTYPRG_Settings Instance
 	 *
-	 * Ensures only one instance of Toasty_Purge_Settings is loaded or can be loaded.
+	 * Ensures only one instance of TOASTYPRG_Settings is loaded or can be loaded.
 	 *
 	 * @since v0.0.1
 	 * @static
-	 * @see   Toasty_Purge()
+	 * @see   toastyprg()
 	 *
-	 * @param Toasty_Purge $parent Instance of main class.
+	 * @param TOASTYPRG $parent Instance of main class.
 	 *
-	 * @return Toasty_Purge_Settings $_instance
+	 * @return TOASTYPRG_Settings $_instance
 	 */
 	public static function instance( $parent ) {
 		if ( null === self::$_instance ) {

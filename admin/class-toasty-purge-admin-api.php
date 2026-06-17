@@ -5,9 +5,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class Toasty_Purge_Admin_API
+ * Class TOASTYPRG_Admin_API
  */
-class Toasty_Purge_Admin_API {
+class TOASTYPRG_Admin_API {
 
 	/**
 	 * Generate HTML for displaying fields
@@ -23,7 +23,7 @@ class Toasty_Purge_Admin_API {
 	public function display_field( $data = array(), $post = false, $echo = true ) {
 
 		// Get plugin settings
-		$plugin  = Toasty_Purge::instance();
+		$plugin  = TOASTYPRG::instance();
 		$options = get_site_option( $plugin->_option_name );
 
 		// Get field info

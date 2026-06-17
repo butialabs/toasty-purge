@@ -24,8 +24,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return bool Whether the function is removed.
  */
-if ( ! function_exists( 'Toasty_Purge_remove_class_hook' ) ) {
-	function Toasty_Purge_remove_class_hook( $tag, $class_name = '', $method_name = '', $priority = 10 ) {
+if ( ! function_exists( 'toastyprg_remove_class_hook' ) ) {
+	function toastyprg_remove_class_hook( $tag, $class_name = '', $method_name = '', $priority = 10 ) {
 		global $wp_filter;
 		$is_hook_removed = false;
 		if ( ! empty( $wp_filter[ $tag ]->callbacks[ $priority ] ) ) {
@@ -34,11 +34,6 @@ if ( ! function_exists( 'Toasty_Purge_remove_class_hook' ) ) {
 				$wp_filter[ $tag ]->callbacks[ $priority ],
 				'function'
 			), function ( $method ) {
-				/**
-				 * Allow only array & string notation for hooks, since we're
-				 * looking to remove an exact method of a class anyway. And the
-				 * method of the class is passed in as a string anyway.
-				 */
 				return is_string( $method ) || is_array( $method );
 			} );
 

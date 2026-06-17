@@ -5,12 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class Toasty_Purge
+ * Class TOASTYPRG
  */
-class Toasty_Purge {
+class TOASTYPRG {
 
 	/**
-	 * The single instance of Toasty_Purge.
+	 * The single instance of TOASTYPRG.
 	 *
 	 * @var    object
 	 * @access   private
@@ -119,8 +119,8 @@ class Toasty_Purge {
 	 */
 	public function __construct( $file = '', $version = '0.0.1' ) {
 		$this->_version     = $version;
-		$this->_token       = 'Toasty_Purge';
-		$this->_option_name = 'toasty_purge_options';
+		$this->_token       = 'toastyprg';
+		$this->_option_name = $this->_token . '_options';
 
 		// Load plugin environment variables
 		$this->file       = $file;
@@ -132,29 +132,20 @@ class Toasty_Purge {
 
 		/*** PLUGIN FUNCTIONS ***/
 
-		// @since v1.3.0
 		add_action( 'admin_bar_menu', array( $this, 'remove_adminbar_settings' ), 999 );
-		// @since 1.5.0
 		add_action( 'wp_dashboard_setup', array( $this, 'remove_dashboard_widget' ) );
-		// @since 2.0.0
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
-		// @since 3.10.0
 		add_action( 'admin_menu', array( $this, 'remove_menu_item'), 999 );
-		// @since 3.11.0
 		add_action( 'plugins_loaded', array( $this, 'remove_frontend_html_comments' ), 999 );
-		// @since 3.13.0
 		add_action( 'admin_init', array( $this, 'apply_remove_class_hook' ) );
-		// @since 3.13.0
 		add_action( 'admin_menu', array( $this, 'remove_admin_columns_init' ), 11 );
-		// @since 3.13.0
 		add_action( 'admin_init', array( $this, 'remove_seo_scores_dropdown_filters' ), 20 );
-		// @since v0.0.1 - Disable AI & LLMs.txt features
 		add_action( 'admin_init', array( $this, 'disable_ai_llms_features' ), 5 );
 
 
 		// Load API for generic admin functions
 		if ( is_admin() ) {
-			$this->admin = new Toasty_Purge_Admin_API();
+			$this->admin = new TOASTYPRG_Admin_API();
 		}
 
 		$this->options = $this->_get_options();
@@ -165,9 +156,7 @@ class Toasty_Purge {
 	 * Since Yoast SEO 3.6 it is possible to disable the adminbar menu within
 	 * Dashboard > Features but only in individual sites, not network admin
 	 *
-	 * inspired by [Lee Rickler](https://profiles.wordpress.org/lee-rickler/)
-	 *
-	 * @since v1.3.0
+	 * credits [Lee Rickler](https://profiles.wordpress.org/lee-rickler/)
 	 */
 	public function remove_adminbar_settings() {
 		if ( empty( $this->options['remove_adminbar'] ) ) {
@@ -237,8 +226,8 @@ class Toasty_Purge {
 
 	/**
 	 * Upon request by many the plugin now also removes the frontend HTML comments left by Yoast
-	 * improvements of v3.11.1 via [Robert Went](https://gist.github.com/robwent/f36e97fdd648a40775379a86bd97b332)
-	 * v3.14.6: added conditional for new filter tip from [Emanuel-23](https://github.com/senlin/so-clean-up-wp-seo/issues/95)
+	 * credits [Robert Went](https://gist.github.com/robwent/f36e97fdd648a40775379a86bd97b332)
+	 * credits [Emanuel-23](https://github.com/senlin/so-clean-up-wp-seo/issues/95)
 	 *
 	 * @since v3.11.0
 	 * @modified v3.11.1
@@ -282,7 +271,7 @@ class Toasty_Purge {
 
 		if ( ! empty( $this->options['remove_permalinks_warning'] ) ) {
 
-			Toasty_Purge_remove_class_hook( 'admin_notices', 'WPSEO_Admin_Init', 'permalink_settings_notice' );
+			toastyprg_remove_class_hook( 'admin_notices', 'WPSEO_Admin_Init', 'permalink_settings_notice' );
 
 		}
 	}
@@ -290,15 +279,8 @@ class Toasty_Purge {
 	/*
 	 * Remove admin columns
 	 * @since v0.0.1 remove seo columns one by one
-	 * @modified 2.0.2 add empty array as default to avoid warnings form subsequent
-	 *  in_array checks - credits [Ronny Myhre Njaastad](https://github.com/ronnymn)
-	 * @modified 2.1 simplify the CSS rules and add the rule to hide the seo-score
-	 *  column on taxonomies (added to v3.1 of Yoast SEO plugin)
-	 * @modified 2.6.0 only 2 columns left change from checkboxes to radio
-	 * @modified 2.6.1 revert radio to checkboxes and removing the options
-	 *  for focus keyword, title and meta-description
-	 * @modified 3.10.1 add checkbox to hide outgoing internal links column
-	 * @modified 3.13.0 recode the function to **remove** columns instead of hiding them - credits [Dibbyo456](https://github.com/Dibbyo456)
+	 * credits [Ronny Myhre Njaastad](https://github.com/ronnymn)
+	 * credits [Dibbyo456](https://github.com/Dibbyo456)
 	 */
 	public function remove_admin_columns_init() {
 
@@ -416,8 +398,6 @@ class Toasty_Purge {
 	 * CSS needed to hide the various options ticked with checkboxes
 	 *
 	 * @since    v0.0.1
-	 * @modified v2.1.0 remove options for nags that have been temporarily
-	 * disabled in v3.1 of Yoast SEO plugin
 	 */
 	public function enqueue_admin_assets() {
 
@@ -430,10 +410,10 @@ class Toasty_Purge {
 		// Problems/Notification boxes
 		if ( ! empty( $this->options['hide_dashboard_problems_notifications'] ) ) {
 			if ( in_array( 'problems', $this->options['hide_dashboard_problems_notifications'] ) ) {
-				echo '.yoast-container.yoast-container__error{display:none;}'; // @since v2.6.0 hide both Problems/Notifications boxes from Yoast SEO Dashboard; @modified v3.13.1
+				echo '.yoast-container.yoast-container__error{display:none;}';
 			}
 			if ( in_array( 'notifications', $this->options['hide_dashboard_problems_notifications'] ) ) {
-				echo '.yoast-container.yoast-container__warning{display:none;}'; // @since v2.6.0 hide both Problems/Notifications boxes from Yoast SEO Dashboard
+				echo '.yoast-container.yoast-container__warning{display:none;}';
 			}
 		}
 
@@ -582,19 +562,6 @@ class Toasty_Purge {
 			';
 		}
 
-		/*
- 		* admin columns
- 		* @since v0.0.1 remove seo columns one by one
- 		* @modified 2.0.2 add empty array as default to avoid warnings form subsequent
- 		*  in_array checks - credits [Ronny Myhre Njaastad](https://github.com/ronnymn)
- 		* @modified 2.1 simplify the CSS rules and add the rule to hide the seo-score
- 		*  column on taxonomies (added to v3.1 of Yoast SEO plugin)
- 		* @modified 2.6.0 only 2 columns left change from checkboxes to radio
- 		* @modified 2.6.1 revert radio to checkboxes and removing the options
- 		*  for focus keyword, title and meta-description
- 		* @modified 3.10.1 add checkbox to hide outgoing internal links column
- 		* @modified 3.13.2 put CSS rules back to fix bug when using quick edit function (issue #75)
- 		*/
 		// all columns
 		if ( ! empty( $this->options['hide_admincolumns'] ) ) {
 			// seo score column
@@ -678,18 +645,18 @@ class Toasty_Purge {
 	}
 
 	/**
-	 * Main Toasty_Purge Instance
+	 * Main TOASTYPRG Instance
 	 *
-	 * Ensures only one instance of Toasty_Purge is loaded or can be loaded.
+	 * Ensures only one instance of TOASTYPRG is loaded or can be loaded.
 	 *
 	 * @since v0.0.1
 	 * @static
-	 * @see   Toasty_Purge()
+	 * @see   toastyprg()
 	 *
 	 * @param string $file
 	 * @param string $version Version number.
 	 *
-	 * @return Toasty_Purge $_instance
+	 * @return TOASTYPRG $_instance
 	 */
 	public static function instance( $file = '', $version = '0.0.1' ) {
 		if ( null === self::$_instance ) {
@@ -801,14 +768,7 @@ class Toasty_Purge {
 		$options = get_site_option( $this->_option_name );
 
 		if ( false === $options ) {
-			$legacy = get_site_option( $this->_token . '_settings' );
-			if ( false !== $legacy ) {
-				$options = $legacy;
-				update_site_option( $this->_option_name, $options );
-				delete_site_option( $this->_token . '_settings' );
-			} else {
-				$options = array();
-			}
+			$options = array();
 		}
 
 		$defaults = $this->get_defaults();
