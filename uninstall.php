@@ -14,25 +14,4 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-/**
- * Remove all Toasty_Purge_ options from the database
- *
- * @since v2.0.0
- */
-global $wpdb;
-
-if ( is_multisite() ) {
-	$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-		$wpdb->prepare(
-			"DELETE FROM `{$wpdb->base_prefix}sitemeta` WHERE `meta_key` LIKE %s LIMIT 1000",
-			'%Toasty_Purge_%'
-		)
-	);
-} else {
-	$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-		$wpdb->prepare(
-			"DELETE FROM `{$wpdb->base_prefix}options` WHERE `option_name` LIKE %s LIMIT 1000",
-			'%Toasty_Purge_%'
-		)
-	);
-}
+delete_site_option( 'toasty_purge_options' );

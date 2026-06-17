@@ -11,7 +11,7 @@ class Toasty_Purge_Settings {
 	 *
 	 * @var    object
 	 * @access   private
-	 * @since    v2.0.0
+	 * @since    v0.0.1
 	 */
 	private static $_instance = null;
 
@@ -20,7 +20,7 @@ class Toasty_Purge_Settings {
 	 *
 	 * @var    object
 	 * @access   public
-	 * @since    v2.0.0
+	 * @since    v0.0.1
 	 */
 	public $parent = null;
 
@@ -29,7 +29,7 @@ class Toasty_Purge_Settings {
 	 *
 	 * @var     string
 	 * @access  public
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 */
 	public $base = '';
 
@@ -38,7 +38,7 @@ class Toasty_Purge_Settings {
 	 *
 	 * @var     array
 	 * @access  public
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 */
 	public $settings = array();
 
@@ -74,7 +74,7 @@ class Toasty_Purge_Settings {
 		}
 
 		// Save setting in Multisite
-		add_action( 'network_admin_edit_' . $this->parent->_token . '_settings', array(
+		add_action( 'network_admin_edit_' . $this->parent->_token . '_options', array(
 			$this,
 			'update_settings',
 		) );
@@ -93,10 +93,17 @@ class Toasty_Purge_Settings {
 			return;
 		}
 
+		$option_group = $this->parent->_token . '_options';
+		$nonce_action = $option_group . '-options';
+
 		// Verify nonce added by settings_fields().
-		$nonce_action = $this->parent->_token . '_settings-options';
 		if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['_wpnonce'] ) ), $nonce_action ) ) {
 			return;
+		}
+
+		$capability = is_multisite() ? 'manage_network' : 'manage_options';
+		if ( ! current_user_can( $capability ) ) {
+			wp_die( esc_html__( 'You do not have permission to save these settings.', 'toasty-purge' ) );
 		}
 
 		$plugin        = Toasty_Purge::instance();
@@ -107,7 +114,7 @@ class Toasty_Purge_Settings {
 			'hide_helpcenter',
 		);
 
-		if ( $this->parent->_token . '_settings' === sanitize_key( wp_unslash( $_POST['option_page'] ) ) &&
+		if ( $option_group === sanitize_key( wp_unslash( $_POST['option_page'] ) ) &&
 		     'update' === sanitize_key( wp_unslash( $_POST['action'] ) )
 		) {
 			$options = array();
@@ -121,10 +128,10 @@ class Toasty_Purge_Settings {
 					$options[ $option ] = sanitize_text_field( wp_unslash( $_POST[ $key ] ) );
 				}
 			}
-			update_site_option( $this->parent->_token . '_settings', $options );
+			update_site_option( $this->parent->_option_name, $options );
 
 			$location = add_query_arg(
-				array( 'page' => $this->parent->_token . '_settings' ),
+				array( 'page' => $option_group ),
 				network_admin_url( 'admin.php' )
 			);
 			wp_safe_redirect( $location );
@@ -136,7 +143,7 @@ class Toasty_Purge_Settings {
 	 * Initialise settings
 	 *
 	 * @return void
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 */
 	public function init_settings() {
 		$this->settings = $this->settings_fields();
@@ -146,7 +153,7 @@ class Toasty_Purge_Settings {
 	 * Add settings page to admin menu
 	 *
 	 * @return void
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 */
 	public function add_menu_item() {
 		$capability = is_multisite() ? 'manage_network' : 'manage_options';
@@ -155,7 +162,7 @@ class Toasty_Purge_Settings {
 			__( 'Toasty Purge Settings', 'toasty-purge' ),
 			__( 'Toasty Purge', 'toasty-purge' ),
 			$capability,
-			$this->parent->_token . '_settings',
+			$this->parent->_token . '_options',
 			array( $this, 'settings_page' )
 		);
 	}
@@ -166,10 +173,10 @@ class Toasty_Purge_Settings {
 	 * @param  array $links Existing links
 	 *
 	 * @return array        Modified links
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 */
 	public function add_settings_link( $links ) {
-		$settings_link = '<a href="admin.php?page=' . esc_attr( $this->parent->_token . '_settings' ) . '">' . esc_html__( 'Settings', 'toasty-purge' ) . '</a>';
+		$settings_link = '<a href="admin.php?page=' . esc_attr( $this->parent->_token . '_options' ) . '">' . esc_html__( 'Settings', 'toasty-purge' ) . '</a>';
 		array_unshift( $links, $settings_link );
 
 		return $links;
@@ -179,7 +186,7 @@ class Toasty_Purge_Settings {
 	 * Build settings fields
 	 *
 	 * @return array Fields to be displayed on settings page
-	 * @since    v2.0.0
+	 * @since    v0.0.1
 	 */
 	private function settings_fields() {
 		$plugin  = Toasty_Purge::instance();
@@ -340,7 +347,7 @@ class Toasty_Purge_Settings {
 			),
 		);
 
-		$settings = apply_filters( $this->parent->_token . '_settings_fields', $settings ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
+		$settings = apply_filters( $this->parent->_token . '_options_fields', $settings ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
 
 		return $settings;
 	}
@@ -362,29 +369,30 @@ class Toasty_Purge_Settings {
  	* Register plugin settings
  	*
  	* @return void
- 	* @since   v2.0.0
+ 	* @since   v0.0.1
  	*/
 	public function register_settings() {
-		$settings = $this->settings_fields();
+		$settings    = $this->settings_fields();
+		$option_page = $this->parent->_token . '_options';
 
 		if ( is_array( $settings ) ) {
 			foreach ( $settings as $section => $data ) {
 				register_setting(
-					$this->parent->_token . '_settings',
-					'settings',
+					$option_page,
+					$this->parent->_option_name,
 					array( 'sanitize_callback' => array( $this, 'sanitize_settings' ) )
 				);
-				add_settings_section( $section, $data['title'], array( $this, 'settings_section' ), $this->parent->_token . '_settings' );
+				add_settings_section( $section, $data['title'], array( $this, 'settings_section' ), $option_page );
 
 				foreach ( $data['fields'] as $field ) {
-					add_settings_field( $field['id'], $field['label'], array( $this->parent->admin, 'display_field' ), $this->parent->_token . '_settings', $section, array( 'field' => $field, 'prefix' => $this->base ) );
+					add_settings_field( $field['id'], $field['label'], array( $this->parent->admin, 'display_field' ), $option_page, $section, array( 'field' => $field, 'prefix' => $this->base ) );
 				}
 			}
 		}
 
 		// Multisite saves via update_settings() via the network_admin_edit_ hook — not here.
 		if ( ! is_multisite() && isset( $_POST['action'] ) && 'update' === $_POST['action'] ) {
-			if ( isset( $_POST['_wpnonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['_wpnonce'] ) ), $this->parent->_token . '_settings-options' ) ) {
+			if ( isset( $_POST['_wpnonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['_wpnonce'] ) ), $option_page . '-options' ) ) {
 				$this->update_settings();
 			}
 		}
@@ -404,11 +412,11 @@ class Toasty_Purge_Settings {
 	 * Load settings page content
 	 *
 	 * @return void
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 */
 	public function settings_page() {
 
-		echo '<div class="wrap" id="' . esc_attr( $this->parent->_token . '_settings' ) . '">' . "\n";
+		echo '<div class="wrap" id="' . esc_attr( $this->parent->_token . '_options' ) . '">' . "\n";
 		echo '<h2>' . esc_html__( 'Toasty Purge Settings', 'toasty-purge' ) . '</h2>' . "\n";
 
 		echo '<p>';
@@ -432,13 +440,13 @@ class Toasty_Purge_Settings {
 		echo '<p><strong>' . esc_html__( 'Without further ado: Hide the bloat', 'toasty-purge' ) . '</strong></p><hr>' . "\n";
 
 		$action = is_network_admin()
-			? 'edit.php?action=' . esc_attr( $this->parent->_token . '_settings' )
+			? 'edit.php?action=' . esc_attr( $this->parent->_token . '_options' )
 			: 'options.php';
 
 		echo '<form method="post" action="' . esc_url( $action ) . '" enctype="multipart/form-data">' . "\n";
 
-		settings_fields( $this->parent->_token . '_settings' );
-		do_settings_sections( $this->parent->_token . '_settings' );
+		settings_fields( $this->parent->_token . '_options' );
+		do_settings_sections( $this->parent->_token . '_options' );
 
 		echo '<p class="submit">' . "\n";
 		submit_button( __( 'Save Settings', 'toasty-purge' ), 'primary', 'Submit', false );
@@ -452,7 +460,7 @@ class Toasty_Purge_Settings {
 	 *
 	 * Ensures only one instance of Toasty_Purge_Settings is loaded or can be loaded.
 	 *
-	 * @since v2.0.0
+	 * @since v0.0.1
 	 * @static
 	 * @see   Toasty_Purge()
 	 *
@@ -471,7 +479,7 @@ class Toasty_Purge_Settings {
 	/**
 	 * Cloning is forbidden.
 	 *
-	 * @since v2.0.0
+	 * @since v0.0.1
 	 */
 	public function __clone() {
 		_doing_it_wrong( __FUNCTION__, esc_html__( 'Access denied', 'toasty-purge' ), esc_html( $this->parent->_version ) );
@@ -480,7 +488,7 @@ class Toasty_Purge_Settings {
 	/**
 	 * Unserializing instances of this class is forbidden.
 	 *
-	 * @since v2.0.0
+	 * @since v0.0.1
 	 */
 	public function __wakeup() {
 		_doing_it_wrong( __FUNCTION__, esc_html__( 'Access denied', 'toasty-purge' ), esc_html( $this->parent->_version ) );

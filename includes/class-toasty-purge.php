@@ -14,7 +14,7 @@ class Toasty_Purge {
 	 *
 	 * @var    object
 	 * @access   private
-	 * @since    v2.0.0
+	 * @since    v0.0.1
 	 */
 	private static $_instance = null;
 
@@ -23,7 +23,7 @@ class Toasty_Purge {
 	 *
 	 * @var     object
 	 * @access  public
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 */
 	public $settings = null;
 
@@ -32,7 +32,7 @@ class Toasty_Purge {
 	 *
 	 * @var     string
 	 * @access  public
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 */
 	public $_version;
 
@@ -41,16 +41,25 @@ class Toasty_Purge {
 	 *
 	 * @var     string
 	 * @access  public
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 */
 	public $_token;
+
+	/**
+	 * The option name.
+	 *
+	 * @var     string
+	 * @access  public
+	 * @since   v0.0.1
+	 */
+	public $_option_name;
 
 	/**
 	 * The main plugin file.
 	 *
 	 * @var     string
 	 * @access  public
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 */
 	public $file;
 
@@ -59,7 +68,7 @@ class Toasty_Purge {
 	 *
 	 * @var     string
 	 * @access  public
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 */
 	public $dir;
 
@@ -68,7 +77,7 @@ class Toasty_Purge {
 	 *
 	 * @var     string
 	 * @access  public
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 */
 	public $assets_dir;
 
@@ -77,7 +86,7 @@ class Toasty_Purge {
 	 *
 	 * @var     string
 	 * @access  public
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 */
 	public $assets_url;
 
@@ -86,7 +95,7 @@ class Toasty_Purge {
 	 *
 	 * @var     object
 	 * @access  public
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 */
 	public $admin = null;
 
@@ -103,14 +112,15 @@ class Toasty_Purge {
 	 * Constructor function.
 	 *
 	 * @access  public
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 *
 	 * @param string $file
 	 * @param string $version Version number.
 	 */
 	public function __construct( $file = '', $version = '0.0.1' ) {
-		$this->_version = $version;
-		$this->_token   = 'Toasty_Purge';
+		$this->_version     = $version;
+		$this->_token       = 'Toasty_Purge';
+		$this->_option_name = 'toasty_purge_options';
 
 		// Load plugin environment variables
 		$this->file       = $file;
@@ -127,7 +137,7 @@ class Toasty_Purge {
 		// @since 1.5.0
 		add_action( 'wp_dashboard_setup', array( $this, 'remove_dashboard_widget' ) );
 		// @since 2.0.0
-		add_action( 'admin_head', array( $this, 'hide_visibility_css' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 		// @since 3.10.0
 		add_action( 'admin_menu', array( $this, 'remove_menu_item'), 999 );
 		// @since 3.11.0
@@ -279,7 +289,7 @@ class Toasty_Purge {
 
 	/*
 	 * Remove admin columns
-	 * @since v2.0.0 remove seo columns one by one
+	 * @since v0.0.1 remove seo columns one by one
 	 * @modified 2.0.2 add empty array as default to avoid warnings form subsequent
 	 *  in_array checks - credits [Ronny Myhre Njaastad](https://github.com/ronnymn)
 	 * @modified 2.1 simplify the CSS rules and add the rule to hide the seo-score
@@ -405,13 +415,17 @@ class Toasty_Purge {
 	/**
 	 * CSS needed to hide the various options ticked with checkboxes
 	 *
-	 * @since    v2.0.0
+	 * @since    v0.0.1
 	 * @modified v2.1.0 remove options for nags that have been temporarily
 	 * disabled in v3.1 of Yoast SEO plugin
 	 */
-	public function hide_visibility_css() {
+	public function enqueue_admin_assets() {
 
-		echo '<style media="screen" id="so-hide-seo-bloat" type="text/css">';
+		$handle = 'toasty-purge-admin';
+		wp_register_style( $handle, false, array(), $this->_version );
+		wp_enqueue_style( $handle );
+
+		ob_start();
 
 		// Problems/Notification boxes
 		if ( ! empty( $this->options['hide_dashboard_problems_notifications'] ) ) {
@@ -570,7 +584,7 @@ class Toasty_Purge {
 
 		/*
  		* admin columns
- 		* @since v2.0.0 remove seo columns one by one
+ 		* @since v0.0.1 remove seo columns one by one
  		* @modified 2.0.2 add empty array as default to avoid warnings form subsequent
  		*  in_array checks - credits [Ronny Myhre Njaastad](https://github.com/ronnymn)
  		* @modified 2.1 simplify the CSS rules and add the rule to hide the seo-score
@@ -585,7 +599,7 @@ class Toasty_Purge {
 		if ( ! empty( $this->options['hide_admincolumns'] ) ) {
 			// seo score column
 			if ( in_array( 'seoscore', $this->options['hide_admincolumns'] ) ) {
-				echo '.column-wpseo-score,.column-wpseo_score{display:none;}'; // @since v2.0.0 remove seo columns one by one
+				echo '.column-wpseo-score,.column-wpseo_score{display:none;}'; // @since v0.0.1 remove seo columns one by one
 			}
 			// readability column
 			if ( in_array( 'readability', $this->options['hide_admincolumns'] ) ) {
@@ -593,15 +607,15 @@ class Toasty_Purge {
 			}
 			// title column
 			if ( in_array( 'title', $this->options['hide_admincolumns'] ) ) {
-				echo '.column-wpseo-title{display:none;}'; // @since v2.0.0 remove seo columns one by one
+				echo '.column-wpseo-title{display:none;}'; // @since v0.0.1 remove seo columns one by one
 			}
 			// meta description column
 			if ( in_array( 'metadescr', $this->options['hide_admincolumns'] ) ) {
-				echo '.column-wpseo-metadesc{display:none;}'; // @since v2.0.0 remove seo columns one by one
+				echo '.column-wpseo-metadesc{display:none;}'; // @since v0.0.1 remove seo columns one by one
 			}
 			// focus keyword column
 			if ( in_array( 'focuskw', $this->options['hide_admincolumns'] ) ) {
-				echo '.column-wpseo-focuskw{display:none;}'; // @since v2.0.0 remove seo columns one by one
+				echo '.column-wpseo-focuskw{display:none;}'; // @since v0.0.1 remove seo columns one by one
 			}
 			// outgoing internal links column
 			if ( in_array( 'outgoing_internal_links', $this->options['hide_admincolumns'] ) ) {
@@ -654,6 +668,13 @@ class Toasty_Purge {
 		}
 
 		echo '</style>';
+
+		$css = ob_get_clean();
+
+		$css = preg_replace( '/^\s*<style[^>]*>\s*/i', '', $css );
+		$css = preg_replace( '/\s*<\/style>\s*$/i', '', $css );
+
+		wp_add_inline_style( $handle, $css );
 	}
 
 	/**
@@ -661,7 +682,7 @@ class Toasty_Purge {
 	 *
 	 * Ensures only one instance of Toasty_Purge is loaded or can be loaded.
 	 *
-	 * @since v2.0.0
+	 * @since v0.0.1
 	 * @static
 	 * @see   Toasty_Purge()
 	 *
@@ -681,7 +702,7 @@ class Toasty_Purge {
 	/**
 	 * Cloning is forbidden.
 	 *
-	 * @since v2.0.0
+	 * @since v0.0.1
 	 */
 	public function __clone() {
 		_doing_it_wrong( __FUNCTION__, esc_html__( 'No Access', 'toasty-purge' ), esc_html( $this->_version ) );
@@ -690,7 +711,7 @@ class Toasty_Purge {
 	/**
 	 * Unserializing instances of this class is forbidden.
 	 *
-	 * @since v2.0.0
+	 * @since v0.0.1
 	 */
 	public function __wakeup() {
 		_doing_it_wrong( __FUNCTION__, esc_html__( 'No Access', 'toasty-purge' ), esc_html( $this->_version ) );
@@ -700,7 +721,7 @@ class Toasty_Purge {
 	 * Installation. Runs on activation.
 	 *
 	 * @access  public
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 * @return  void
 	 */
 	public function install() {
@@ -712,7 +733,7 @@ class Toasty_Purge {
 	 * Log the plugin version number.
 	 *
 	 * @access  private
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 * @return  void
 	 */
 	private function _log_version_number() {
@@ -766,7 +787,7 @@ class Toasty_Purge {
 	 */
 	private function _set_defaults() {
 		$defaults = $this->get_defaults();
-		update_site_option( $this->_token . '_settings', $defaults );
+		add_site_option( $this->_option_name, $defaults );
 	} // End _set_defaults ()
 
 	/**
@@ -777,13 +798,25 @@ class Toasty_Purge {
 	 * @since 3.8.1
 	 */
 	private function _get_options() {
-		$options  = get_site_option( $this->_token . '_settings', array() );
+		$options = get_site_option( $this->_option_name );
+
+		if ( false === $options ) {
+			$legacy = get_site_option( $this->_token . '_settings' );
+			if ( false !== $legacy ) {
+				$options = $legacy;
+				update_site_option( $this->_option_name, $options );
+				delete_site_option( $this->_token . '_settings' );
+			} else {
+				$options = array();
+			}
+		}
+
 		$defaults = $this->get_defaults();
 		$diff     = array_diff_key( $defaults, $options );
 
 		if ( ! empty( $diff ) ) {
 			$options = array_merge( $options, $diff );
-			update_site_option( $this->_token . '_settings', $options );
+			update_site_option( $this->_option_name, $options );
 		}
 
 		return $options;

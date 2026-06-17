@@ -18,13 +18,13 @@ class Toasty_Purge_Admin_API {
 	 *
 	 * @return string
 	 * @source  : //github.com/hlashbrooke/WordPress-Plugin-Template/
-	 * @since   v2.0.0
+	 * @since   v0.0.1
 	 */
 	public function display_field( $data = array(), $post = false, $echo = true ) {
 
 		// Get plugin settings
 		$plugin  = Toasty_Purge::instance();
-		$options = get_site_option( $plugin->_token . '_settings' );
+		$options = get_site_option( $plugin->_option_name );
 
 		// Get field info
 		if ( isset( $data['field'] ) ) {
