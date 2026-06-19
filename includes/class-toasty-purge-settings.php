@@ -11,7 +11,7 @@ class TOASTYPRG_Settings {
 	 *
 	 * @var    object
 	 * @access   private
-	 * @since    v0.0.1
+	 * @since    v1.0.0
 	 */
 	private static $_instance = null;
 
@@ -20,7 +20,7 @@ class TOASTYPRG_Settings {
 	 *
 	 * @var    object
 	 * @access   public
-	 * @since    v0.0.1
+	 * @since    v1.0.0
 	 */
 	public $parent = null;
 
@@ -29,7 +29,7 @@ class TOASTYPRG_Settings {
 	 *
 	 * @var     string
 	 * @access  public
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public $base = '';
 
@@ -38,7 +38,7 @@ class TOASTYPRG_Settings {
 	 *
 	 * @var     array
 	 * @access  public
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public $settings = array();
 
@@ -143,7 +143,7 @@ class TOASTYPRG_Settings {
 	 * Initialise settings
 	 *
 	 * @return void
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public function init_settings() {
 		$this->settings = $this->settings_fields();
@@ -153,7 +153,7 @@ class TOASTYPRG_Settings {
 	 * Add settings page to admin menu
 	 *
 	 * @return void
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public function add_menu_item() {
 		$capability = is_multisite() ? 'manage_network' : 'manage_options';
@@ -173,7 +173,7 @@ class TOASTYPRG_Settings {
 	 * @param  array $links Existing links
 	 *
 	 * @return array        Modified links
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public function add_settings_link( $links ) {
 		$settings_link = '<a href="admin.php?page=' . esc_attr( $this->parent->_token . '_options' ) . '">' . esc_html__( 'Settings', 'toasty-purge' ) . '</a>';
@@ -186,7 +186,7 @@ class TOASTYPRG_Settings {
 	 * Build settings fields
 	 *
 	 * @return array Fields to be displayed on settings page
-	 * @since    v0.0.1
+	 * @since    v1.0.0
 	 */
 	private function settings_fields() {
 		$plugin  = TOASTYPRG::instance();
@@ -366,7 +366,7 @@ class TOASTYPRG_Settings {
  	* Register plugin settings
  	*
  	* @return void
- 	* @since   v0.0.1
+ 	* @since   v1.0.0
  	*/
 	public function register_settings() {
 		$settings    = $this->settings_fields();
@@ -409,7 +409,7 @@ class TOASTYPRG_Settings {
 	 * Load settings page content
 	 *
 	 * @return void
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public function settings_page() {
 
@@ -457,7 +457,7 @@ class TOASTYPRG_Settings {
 	 *
 	 * Ensures only one instance of TOASTYPRG_Settings is loaded or can be loaded.
 	 *
-	 * @since v0.0.1
+	 * @since v1.0.0
 	 * @static
 	 * @see   toastyprg()
 	 *
@@ -476,7 +476,7 @@ class TOASTYPRG_Settings {
 	/**
 	 * Cloning is forbidden.
 	 *
-	 * @since v0.0.1
+	 * @since v1.0.0
 	 */
 	public function __clone() {
 		_doing_it_wrong( __FUNCTION__, esc_html__( 'Access denied', 'toasty-purge' ), esc_html( $this->parent->_version ) );
@@ -485,7 +485,7 @@ class TOASTYPRG_Settings {
 	/**
 	 * Unserializing instances of this class is forbidden.
 	 *
-	 * @since v0.0.1
+	 * @since v1.0.0
 	 */
 	public function __wakeup() {
 		_doing_it_wrong( __FUNCTION__, esc_html__( 'Access denied', 'toasty-purge' ), esc_html( $this->parent->_version ) );

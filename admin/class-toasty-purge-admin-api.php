@@ -18,7 +18,7 @@ class TOASTYPRG_Admin_API {
 	 *
 	 * @return string
 	 * @source  : //github.com/hlashbrooke/WordPress-Plugin-Template/
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public function display_field( $data = array(), $post = false, $echo = true ) {
 

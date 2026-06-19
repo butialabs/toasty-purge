@@ -24,11 +24,11 @@ require_once( 'admin/class-toasty-purge-admin-api.php' );
 /**
  * Returns the main instance of TOASTYPRG to prevent the need to use globals.
  *
- * @since  v0.0.1
+ * @since  v1.0.0
  * @return object TOASTYPRG
  */
 function toastyprg () {
-	$instance = TOASTYPRG::instance( __FILE__, '0.0.1' );
+	$instance = TOASTYPRG::instance( __FILE__, '1.0.0' );
 
 	if ( null === $instance->settings ) {
 		$instance->settings = TOASTYPRG_Settings::instance( $instance );

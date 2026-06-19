@@ -14,7 +14,7 @@ class TOASTYPRG {
 	 *
 	 * @var    object
 	 * @access   private
-	 * @since    v0.0.1
+	 * @since    v1.0.0
 	 */
 	private static $_instance = null;
 
@@ -23,7 +23,7 @@ class TOASTYPRG {
 	 *
 	 * @var     object
 	 * @access  public
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public $settings = null;
 
@@ -32,7 +32,7 @@ class TOASTYPRG {
 	 *
 	 * @var     string
 	 * @access  public
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public $_version;
 
@@ -41,7 +41,7 @@ class TOASTYPRG {
 	 *
 	 * @var     string
 	 * @access  public
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public $_token;
 
@@ -50,7 +50,7 @@ class TOASTYPRG {
 	 *
 	 * @var     string
 	 * @access  public
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public $_option_name;
 
@@ -59,7 +59,7 @@ class TOASTYPRG {
 	 *
 	 * @var     string
 	 * @access  public
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public $file;
 
@@ -68,7 +68,7 @@ class TOASTYPRG {
 	 *
 	 * @var     string
 	 * @access  public
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public $dir;
 
@@ -77,7 +77,7 @@ class TOASTYPRG {
 	 *
 	 * @var     string
 	 * @access  public
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public $assets_dir;
 
@@ -86,7 +86,7 @@ class TOASTYPRG {
 	 *
 	 * @var     string
 	 * @access  public
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public $assets_url;
 
@@ -95,7 +95,7 @@ class TOASTYPRG {
 	 *
 	 * @var     object
 	 * @access  public
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 */
 	public $admin = null;
 
@@ -112,7 +112,7 @@ class TOASTYPRG {
 	 * Constructor function.
 	 *
 	 * @access  public
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 *
 	 * @param string $file
 	 * @param string $version Version number.
@@ -211,12 +211,12 @@ class TOASTYPRG {
 		// Google has discontinued its Crawl Errors API so the Search Console page in Yoast is useless now; @since v3.12.0
 		remove_submenu_page( 'wpseo_dashboard', 'wpseo_search_console' );
 
-		// Remove Support submenu; @since v0.0.1
+		// Remove Support submenu; @since v1.0.0
 		if ( ! empty( $this->options['hide_support_submenu'] ) ) {
 			remove_submenu_page( 'wpseo_dashboard', 'wpseo_page_support' );
 		}
 
-		// Remove AI Brand Insights submenu (free & premium versions); @since v0.0.1
+		// Remove AI Brand Insights submenu (free & premium versions); @since v1.0.0
 		if ( ! empty( $this->options['hide_ai_brand_insights'] ) ) {
 			remove_submenu_page( 'wpseo_dashboard', 'wpseo_brand_insights' );
 			remove_submenu_page( 'wpseo_dashboard', 'wpseo_brand_insights_premium' );
@@ -278,7 +278,7 @@ class TOASTYPRG {
 
 	/*
 	 * Remove admin columns
-	 * @since v0.0.1 remove seo columns one by one
+	 * @since v1.0.0 remove seo columns one by one
 	 * credits [Ronny Myhre Njaastad](https://github.com/ronnymn)
 	 * credits [Dibbyo456](https://github.com/Dibbyo456)
 	 */
@@ -355,7 +355,7 @@ class TOASTYPRG {
 	 * Disable AI & LLMs.txt features
 	 * Disables the enable_llms_txt option in Yoast SEO
 	 *
-	 * @since v0.0.1
+	 * @since v1.0.0
 	 */
 	public function disable_ai_llms_features() {
 		if ( ! empty( $this->options['disable_ai_llms_features'] ) ) {
@@ -370,7 +370,7 @@ class TOASTYPRG {
 	 *
 	 * @param array $defaults The default options.
 	 * @return array Modified defaults.
-	 * @since v0.0.1
+	 * @since v1.0.0
 	 */
 	public function filter_llms_defaults( $defaults ) {
 		if ( isset( $defaults['enable_llms_txt'] ) ) {
@@ -384,7 +384,7 @@ class TOASTYPRG {
 	 *
 	 * @param array $options The options.
 	 * @return array Modified options.
-	 * @since v0.0.1
+	 * @since v1.0.0
 	 */
 	public function filter_llms_option( $options ) {
 		if ( is_array( $options ) && isset( $options['enable_llms_txt'] ) ) {
@@ -397,7 +397,7 @@ class TOASTYPRG {
 	/**
 	 * CSS needed to hide the various options ticked with checkboxes
 	 *
-	 * @since    v0.0.1
+	 * @since    v1.0.0
 	 */
 	public function enqueue_admin_assets() {
 
@@ -566,7 +566,7 @@ class TOASTYPRG {
 		if ( ! empty( $this->options['hide_admincolumns'] ) ) {
 			// seo score column
 			if ( in_array( 'seoscore', $this->options['hide_admincolumns'] ) ) {
-				echo '.column-wpseo-score,.column-wpseo_score{display:none;}'; // @since v0.0.1 remove seo columns one by one
+				echo '.column-wpseo-score,.column-wpseo_score{display:none;}'; // @since v1.0.0 remove seo columns one by one
 			}
 			// readability column
 			if ( in_array( 'readability', $this->options['hide_admincolumns'] ) ) {
@@ -574,15 +574,15 @@ class TOASTYPRG {
 			}
 			// title column
 			if ( in_array( 'title', $this->options['hide_admincolumns'] ) ) {
-				echo '.column-wpseo-title{display:none;}'; // @since v0.0.1 remove seo columns one by one
+				echo '.column-wpseo-title{display:none;}'; // @since v1.0.0 remove seo columns one by one
 			}
 			// meta description column
 			if ( in_array( 'metadescr', $this->options['hide_admincolumns'] ) ) {
-				echo '.column-wpseo-metadesc{display:none;}'; // @since v0.0.1 remove seo columns one by one
+				echo '.column-wpseo-metadesc{display:none;}'; // @since v1.0.0 remove seo columns one by one
 			}
 			// focus keyword column
 			if ( in_array( 'focuskw', $this->options['hide_admincolumns'] ) ) {
-				echo '.column-wpseo-focuskw{display:none;}'; // @since v0.0.1 remove seo columns one by one
+				echo '.column-wpseo-focuskw{display:none;}'; // @since v1.0.0 remove seo columns one by one
 			}
 			// outgoing internal links column
 			if ( in_array( 'outgoing_internal_links', $this->options['hide_admincolumns'] ) ) {
@@ -649,7 +649,7 @@ class TOASTYPRG {
 	 *
 	 * Ensures only one instance of TOASTYPRG is loaded or can be loaded.
 	 *
-	 * @since v0.0.1
+	 * @since v1.0.0
 	 * @static
 	 * @see   toastyprg()
 	 *
@@ -669,7 +669,7 @@ class TOASTYPRG {
 	/**
 	 * Cloning is forbidden.
 	 *
-	 * @since v0.0.1
+	 * @since v1.0.0
 	 */
 	public function __clone() {
 		_doing_it_wrong( __FUNCTION__, esc_html__( 'No Access', 'toasty-purge' ), esc_html( $this->_version ) );
@@ -678,7 +678,7 @@ class TOASTYPRG {
 	/**
 	 * Unserializing instances of this class is forbidden.
 	 *
-	 * @since v0.0.1
+	 * @since v1.0.0
 	 */
 	public function __wakeup() {
 		_doing_it_wrong( __FUNCTION__, esc_html__( 'No Access', 'toasty-purge' ), esc_html( $this->_version ) );
@@ -688,7 +688,7 @@ class TOASTYPRG {
 	 * Installation. Runs on activation.
 	 *
 	 * @access  public
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 * @return  void
 	 */
 	public function install() {
@@ -700,7 +700,7 @@ class TOASTYPRG {
 	 * Log the plugin version number.
 	 *
 	 * @access  private
-	 * @since   v0.0.1
+	 * @since   v1.0.0
 	 * @return  void
 	 */
 	private function _log_version_number() {
