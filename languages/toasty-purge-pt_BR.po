@@ -1,255 +1,258 @@
-# Copyright (C) Butiá Labs
-# This file is distributed under the GPL-2.0-or-later license.
 msgid ""
 msgstr ""
 "Project-Id-Version: Toasty Purge 1.0.1\n"
 "Report-Msgid-Bugs-To: https://github.com/butialabs/toasty-purge/issues\n"
 "POT-Creation-Date: 2026-06-19 12:00+0000\n"
+"PO-Revision-Date: 2026-06-19 12:00+0000\n"
+"Last-Translator: Butiá Labs <contato@butialabs.com>\n"
+"Language-Team: Português do Brasil\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Domain: toasty-purge\n"
 
 #. Description of the plugin
 msgid "Hide most of the bloat that the Yoast SEO plugin adds to your WordPress Dashboard"
-msgstr ""
+msgstr "Oculta a maior parte do excesso que o plugin Yoast SEO adiciona ao seu Painel do WordPress."
 
 #: includes/class-toasty-purge.php
 msgid "No Access"
-msgstr ""
+msgstr "Sem acesso"
 
 #: includes/class-toasty-purge-settings.php
 msgid "You do not have permission to save these settings."
-msgstr ""
+msgstr "Você não tem permissão para salvar estas configurações."
 
 #: includes/class-toasty-purge-settings.php
 msgid "Toasty Purge Settings"
-msgstr ""
+msgstr "Configurações do Toasty Purge"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Settings"
-msgstr ""
+msgstr "Configurações"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Yoast SEO Settings pages"
-msgstr ""
+msgstr "Páginas de configurações do Yoast SEO"
 
 #: includes/class-toasty-purge-settings.php
 msgid "General > Dashboard tab > Problems/Notifications boxes"
-msgstr ""
+msgstr "Geral > aba Painel > caixas de Problemas/Notificações"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Hide entire Problems/Notifications boxes from the Dashboard tab under General Settings."
-msgstr ""
+msgstr "Oculta as caixas inteiras de Problemas/Notificações da aba Painel nas Configurações gerais."
 
 #: includes/class-toasty-purge-settings.php
 msgid "Hide entire Problems box"
-msgstr ""
+msgstr "Ocultar a caixa de Problemas inteira"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Hide entire Notifications box"
-msgstr ""
+msgstr "Ocultar a caixa de Notificações inteira"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Settings page > Yoast Premium"
-msgstr ""
+msgstr "Página de configurações > Yoast Premium"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Hide as many as possible ads, premium features or upsells from the Yoast Settings pages."
-msgstr ""
+msgstr "Oculta o máximo possível de anúncios, recursos premium ou ofertas das páginas de configurações do Yoast."
 
 #: includes/class-toasty-purge-settings.php
 msgid "Premium submenus and issue counter"
-msgstr ""
+msgstr "Submenus Premium e contador de problemas"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Hides the \"Premium\", \"Workouts\" and \"Redirects\" submenus as well as the issue counter from the admin sidebar."
-msgstr ""
+msgstr "Oculta os submenus \"Premium\", \"Workouts\" e \"Redirects\", além do contador de problemas, da barra lateral do administrador."
 
 #: includes/class-toasty-purge-settings.php
 msgid "Posts, Pages, Custom post type, Taxonomy pages"
-msgstr ""
+msgstr "Posts, Páginas, Tipos de post personalizados, Páginas de taxonomia"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Admin columns"
-msgstr ""
+msgstr "Colunas do administrador"
 
 #: includes/class-toasty-purge-settings.php
 msgid "There are so many admin columns added to Posts/Pages/taxonomies that it is impossible to see the things that matter, such as the Title. Multiple selections are allowed."
-msgstr ""
+msgstr "Há tantas colunas adicionadas a Posts/Páginas/taxonomias que fica impossível ver o que importa, como o Título. Múltiplas seleções são permitidas."
 
 #: includes/class-toasty-purge-settings.php
 msgid "Remove SEO score column"
-msgstr ""
+msgstr "Remover a coluna de pontuação SEO"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Remove Readability score column"
-msgstr ""
+msgstr "Remover a coluna de pontuação de Legibilidade"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Remove SEO title column"
-msgstr ""
+msgstr "Remover a coluna de título SEO"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Remove Meta Desc. column"
-msgstr ""
+msgstr "Remover a coluna de Meta Descrição"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Remove keyphrase column"
-msgstr ""
+msgstr "Remover a coluna de frase-chave"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Remove outgoing/received internal links column"
-msgstr ""
+msgstr "Remover a coluna de links internos enviados/recebidos"
 
 #: includes/class-toasty-purge-settings.php
 msgid "SEO/Readability Scores Dropdown Filters"
-msgstr ""
+msgstr "Filtros suspensos de pontuação SEO/Legibilidade"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Remove SEO Scores and Readability Scores Dropdown Filters on the Edit Posts/Pages screen"
-msgstr ""
+msgstr "Remover os filtros suspensos de pontuação SEO e Legibilidade na tela de edição de Posts/Páginas"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Featured image nag"
-msgstr ""
+msgstr "Aviso de imagem destacada"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Hide image warning nag that shows in edit Post/Page screen when featured image is smaller than 200x200 pixels."
-msgstr ""
+msgstr "Oculta o aviso de imagem que aparece na tela de edição de Post/Página quando a imagem destacada é menor que 200x200 pixels."
 
 #: includes/class-toasty-purge-settings.php
 msgid "Keyword/Content Score"
-msgstr ""
+msgstr "Pontuação de Palavra-chave/Conteúdo"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Hide the Keyword/Content Score from the Publish/Update Metabox on the Edit Post/Page/CPT screen."
-msgstr ""
+msgstr "Oculta a Pontuação de Palavra-chave/Conteúdo da metabox Publicar/Atualizar na tela de edição de Post/Página/CPT."
 
 #: includes/class-toasty-purge-settings.php
 msgid "Hide Premium features on new/edit post-type screens"
-msgstr ""
+msgstr "Ocultar recursos Premium nas telas de novo/editar tipo de post"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Hide Premium features in the Yoast SEO metabox when publishing or editing content."
-msgstr ""
+msgstr "Oculta os recursos Premium na metabox do Yoast SEO ao publicar ou editar conteúdo."
 
 #: includes/class-toasty-purge-settings.php
 msgid "Hide Ad after trashing content"
-msgstr ""
+msgstr "Ocultar anúncio após mover conteúdo para a lixeira"
 
 #: includes/class-toasty-purge-settings.php
 msgid "When deleting content (Post, Page, Product and other Custom Post Type) a new notice appears on the edit screen that is an upsell ad for the premium version of Yoast SEO. This setting hides that notice."
-msgstr ""
+msgstr "Ao excluir conteúdo (Post, Página, Produto e outros Tipos de post personalizados), um novo aviso aparece na tela de edição como anúncio da versão premium do Yoast SEO. Esta opção oculta esse aviso."
 
 #: includes/class-toasty-purge-settings.php
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Diversos"
 
 #: includes/class-toasty-purge-settings.php
 msgid "SEO menu admin bar"
-msgstr ""
+msgstr "Menu SEO na barra de administração"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Remove Yoast SEO icon and drop-down menu with more premium buttons from the admin bar."
-msgstr ""
+msgstr "Remove o ícone do Yoast SEO e o menu suspenso com mais botões premium da barra de administração."
 
 #: includes/class-toasty-purge-settings.php
 msgid "Dashboard widget"
-msgstr ""
+msgstr "Widget do painel"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Remove the Yoast SEO widget from the WordPress Dashboard."
-msgstr ""
+msgstr "Remove o widget do Yoast SEO do Painel do WordPress."
 
 #: includes/class-toasty-purge-settings.php
 msgid "Remove Permalinks Warning Notice"
-msgstr ""
+msgstr "Remover aviso de Links permanentes"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Remove the notice that shows when changing permalinks informing the user that it is not a good idea"
-msgstr ""
+msgstr "Remove o aviso exibido ao alterar os links permanentes informando ao usuário que não é uma boa ideia"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Profile page"
-msgstr ""
+msgstr "Página de perfil"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Hide SEO Settings on individual profile page."
-msgstr ""
+msgstr "Oculta as configurações de SEO na página de perfil individual."
 
 #: includes/class-toasty-purge-settings.php
 msgid "Remove HTML Comments"
-msgstr ""
+msgstr "Remover comentários HTML"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Remove the HTML Comments from the source code (frontend) of the site"
-msgstr ""
+msgstr "Remove os comentários HTML do código-fonte (frontend) do site"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Support submenu"
-msgstr ""
+msgstr "Submenu de suporte"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Hide the Support submenu from the Yoast SEO menu."
-msgstr ""
+msgstr "Oculta o submenu Suporte do menu do Yoast SEO."
 
 #: includes/class-toasty-purge-settings.php
 msgid "IA"
-msgstr ""
+msgstr "IA"
 
 #: includes/class-toasty-purge-settings.php
 msgid "AI Brand Insights"
-msgstr ""
+msgstr "AI Brand Insights"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Hide the AI Brand Insights submenu from the Yoast SEO menu."
-msgstr ""
+msgstr "Oculta o submenu AI Brand Insights do menu do Yoast SEO."
 
 #: includes/class-toasty-purge-settings.php
 msgid "Yoast AI & LLMs.txt"
-msgstr ""
+msgstr "Yoast AI & LLMs.txt"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Hide the AI and LLMs.txt options block from the Yoast Settings page (Site features) and disable the LLMs.txt tab. Also disables the enable_llms_txt option."
-msgstr ""
+msgstr "Oculta o bloco de opções de IA e LLMs.txt da página de configurações do Yoast (Recursos do site) e desativa a aba LLMs.txt. Também desativa a opção enable_llms_txt."
 
 #: includes/class-toasty-purge-settings.php
 msgid "On this settings page you can adjust things here and there to your liking."
-msgstr ""
+msgstr "Nesta página de configurações você pode ajustar uma coisa ou outra ao seu gosto."
 
 #: includes/class-toasty-purge-settings.php
 msgid "Although some settings are for \"features\" that can easily be dismissed on a per user basis, hiding or removing them here, has two advantages:"
-msgstr ""
+msgstr "Embora algumas configurações sejam para \"recursos\" que podem ser facilmente dispensados por usuário, ocultá-los ou removê-los aqui tem duas vantagens:"
 
 #: includes/class-toasty-purge-settings.php
 msgid "the settings here are global, for all users"
-msgstr ""
+msgstr "as configurações aqui são globais, para todos os usuários"
 
 #: includes/class-toasty-purge-settings.php
 msgid "these settings are centralised on one page, no need to keep dismissing stuff all over the site's backend"
-msgstr ""
+msgstr "estas configurações ficam centralizadas em uma página, sem precisar ficar dispensando coisas por todo o painel do site"
 
 #: includes/class-toasty-purge-settings.php
 msgid "The default settings, when you activate the plugin, are that almost all boxes have been ticked; why else would you install this plugin?"
-msgstr ""
+msgstr "As configurações padrão, ao ativar o plugin, deixam quase todas as caixas marcadas; por que mais você instalaria este plugin?"
 
 #: includes/class-toasty-purge-settings.php
 msgid "If you ever want to remove the Toasty Purge plugin, then you can rest assured that it cleans up after itself:"
-msgstr ""
+msgstr "Se algum dia você quiser remover o plugin Toasty Purge, pode ficar tranquilo que ele limpa tudo sozinho:"
 
 #: includes/class-toasty-purge-settings.php
 msgid "upon deletion it removes all options automatically."
-msgstr ""
+msgstr "ao ser excluído, ele remove todas as opções automaticamente."
 
 #: includes/class-toasty-purge-settings.php
 msgid "Without further ado: Hide the bloat"
-msgstr ""
+msgstr "Sem mais delongas: oculte o excesso"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Save Settings"
-msgstr ""
+msgstr "Salvar configurações"
 
 #: includes/class-toasty-purge-settings.php
 msgid "Access denied"
-msgstr ""
+msgstr "Acesso negado"

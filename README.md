@@ -47,6 +47,11 @@ Please open an issue here on [Github](https://github.com/butialabs/toasty-purge/
 
 ## Changelog
 
+### 1.0.1
+
+* Add Brazilian Portuguese (pt_BR) translation
+* Load plugin textdomain so bundled translations are applied
+
 ### 1.0.0
 
 * release date July 19, 2026

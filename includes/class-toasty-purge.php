@@ -130,6 +130,9 @@ class TOASTYPRG {
 
 		register_activation_hook( $this->file, array( $this, 'install' ) );
 
+		// Load translations
+		add_action( 'init', array( $this, 'load_localisation' ), 0 );
+
 		/*** PLUGIN FUNCTIONS ***/
 
 		add_action( 'admin_bar_menu', array( $this, 'remove_adminbar_settings' ), 999 );
@@ -643,6 +646,17 @@ class TOASTYPRG {
 
 		wp_add_inline_style( $handle, $css );
 	}
+
+	/**
+	 * Load plugin localisation
+	 *
+	 * @access  public
+	 * @since   v1.0.1
+	 * @return  void
+	 */
+	public function load_localisation() {
+		load_plugin_textdomain( 'toasty-purge', false, dirname( plugin_basename( $this->file ) ) . '/languages/' );
+	} // End load_localisation ()
 
 	/**
 	 * Main TOASTYPRG Instance

@@ -4,7 +4,7 @@ Tags: seo, cleanup, bloat, hide, dashboard
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,10 @@ Please open an issue on [Github](https://github.com/butialabs/toasty-purge/issue
 4. Toasty Purge settings page - AI section
 
 == Changelog ==
+
+= 1.0.1 =
+* Add Brazilian Portuguese (pt_BR) translation
+* Load plugin textdomain so bundled translations are applied
 
 = 1.0.0 =
 * Release date: July 19, 2026
