@@ -8,6 +8,8 @@ Stable tag: 1.0.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
+Cleanup a Yoast Bloatwares
+
 == Description ==
 
 > **Note:** This plugin is a fork of the original [Hide SEO Bloat](https://github.com/senlin/so-clean-up-wp-seo) plugin (also known as "SO Clean Up Yoast SEO") created by Pieter Bos.

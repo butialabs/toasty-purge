@@ -1,5 +1,9 @@
 # Toasty Purge
 
+Cleanup a Yoast Bloatwares
+
+== Description ==
+
 > **Note:** This plugin is a fork of the original [Hide SEO Bloat](https://github.com/senlin/so-clean-up-wp-seo) plugin (also known as "SO Clean Up Yoast SEO") created by Pieter Bos.
 
 Toasty Purge provides a single settings page where you can control what gets hidden from Yoast SEO's cluttered admin interface.
