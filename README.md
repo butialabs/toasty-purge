@@ -1,16 +1,6 @@
 # Toasty Purge
 
-###### Original Author: [Pieter Bos](https://github.com/senlin)
-
-Free addon for the Yoast SEO plugin to hide the bloat it adds to your WordPress backend.
-
-## Description
-
 > **Note:** This plugin is a fork of the original [Hide SEO Bloat](https://github.com/senlin/so-clean-up-wp-seo) plugin (also known as "SO Clean Up Yoast SEO") created by Pieter Bos.
-
-Hides (sidebar) ads and premium version buttons of Yoast SEO from their settings pages and your website's dashboard (and frontend).
-
-<hr>
 
 Toasty Purge provides a single settings page where you can control what gets hidden from Yoast SEO's cluttered admin interface.
 
@@ -21,11 +11,6 @@ Things have become much, much more trickier to remove/hide now and some things s
 Why are there still people using Yoast SEO one might ask? There are so many great alternatives that come without screaming ads and hiding features behind a paywall!
 
 For everyone to become much more productive and happier, my proposal therefore is to switch to any of the other SEO plugins, such as SEOPress, The SEO Framework, Rankmath, or any other one out there! Did you know that most SEO plugins come with easy one-click migration tools?
-
-<hr>
-
-If you like the Toasty Purge plugin, please consider leaving a review. You can also help a great deal by translating the plugin into your own language.
-Alternatively you are welcome to make a [donation](https://so-wp.com/donations). Thanks!
 
 ## Frequently Asked Questions
 
@@ -55,10 +40,6 @@ Indeed the Toasty Purge plugin writes its settings to the database. The included
 
 Please open an issue here on [Github](https://github.com/butialabs/toasty-purge/issues)
 
-## Contributions
-
-I welcome your contributions very much! PR's will be considered and of course bug reports and feature requests can also be seen as contributions!
-
 ## License
 
 * License: GNU Version 3 or Any Later Version
@@ -66,13 +47,6 @@ I welcome your contributions very much! PR's will be considered and of course bu
 
 ## Changelog
 
-### 0.0.1
+### 1.0.0
 
-* release date January 28, 2025
-* added option to remove AI bloat
-* added option to remove support screen
-
-### 0.0.1
-
-* release date January 27, 2025
-* rename to Toasty Purge
+* release date July 19, 2026

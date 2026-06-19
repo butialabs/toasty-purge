@@ -8,11 +8,7 @@ Stable tag: 1.0.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Hide most of the bloat that the Yoast SEO plugin adds to your WordPress Dashboard.
-
 == Description ==
-
-Free addon for the Yoast SEO plugin to hide the bloat it adds to your WordPress backend.
 
 > **Note:** This plugin is a fork of the original [Hide SEO Bloat](https://github.com/senlin/so-clean-up-wp-seo) plugin (also known as "SO Clean Up Yoast SEO") created by Pieter Bos.
 
@@ -70,7 +66,7 @@ This plugin is maintained by [Butiá Labs](https://butialabs.com) and is a fork 
 
 * Yoast SEO plugin must be installed and activated
 * WordPress 4.9 or higher
-* PHP 7.0 or higher
+* PHP 8.2 or higher
 
 == Frequently Asked Questions ==
 
@@ -107,21 +103,5 @@ Please open an issue on [Github](https://github.com/butialabs/toasty-purge/issue
 
 == Changelog ==
 
-= 0.0.1 =
-* Release date: January 28, 2025
-* Added option to remove AI bloat
-* Added option to remove support screen
-* Added option to disable AI & LLMs.txt features
-
-= 0.0.1 =
-* Release date: January 27, 2025
-* Renamed to Toasty Purge
-* Forked from SO Clean Up Yoast SEO
-
-== Upgrade Notice ==
-
-= 0.0.1 =
-New options to hide AI and LLMs.txt features added by Yoast SEO. Recommended update for all users.
-
-= 0.0.1 =
-Initial release as Toasty Purge. If you were using SO Clean Up Yoast SEO, this is the successor plugin.
+= 1.0.0 =
+* Release date: July 19, 2026
