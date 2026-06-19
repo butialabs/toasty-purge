@@ -18,8 +18,8 @@ jobs:
       - name: Validate version consistency
         run: |
           echo "Checking version consistency..."
-          PLUGIN_VERSION=$(grep -oP '(?<=Version:\s{1,10})[0-9]+\.[0-9]+\.[0-9]+' toasty-purge.php | head -1)
-          README_VERSION=$(grep -oP '(?<=Stable tag:\s)[0-9]+\.[0-9]+\.[0-9]+' readme.txt | head -1)
+          PLUGIN_VERSION=$(grep -oP 'Version:\s+\K[0-9]+\.[0-9]+\.[0-9]+' toasty-purge.php | head -1)
+          README_VERSION=$(grep -oP 'Stable tag:\s+\K[0-9]+\.[0-9]+\.[0-9]+' readme.txt | head -1)
           TAG_VERSION=${GITHUB_REF#refs/tags/}
 
           echo "Plugin version: $PLUGIN_VERSION"
